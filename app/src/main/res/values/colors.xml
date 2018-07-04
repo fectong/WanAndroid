@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#edebef</color>
+    <color name="colorPrimaryDark">#bbb5c3</color>
+    <color name="colorPrimaryLight">#ffffff</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="colorBG">#ffffff</color>
+    <color name="colorLoginBG">#36485f</color>
+    <color name="colorCardItem">#ffffff</color>
+    <color name="colorTextBG">#44000000</color>
+</resources>
