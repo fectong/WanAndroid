@@ -2,16 +2,16 @@ package com.fec.ex.wanandroid.api;
 
 import com.fec.ex.wanandroid.base.BaseBean;
 import com.fec.ex.wanandroid.settings.collection.ArticleList;
-import com.fec.ex.wanandroid.hierarchy.domain.KnowledgeArticleList;
-import com.fec.ex.wanandroid.hierarchy.domain.KnowledgeTree;
+import com.fec.ex.wanandroid.hierarchy.domain.HierarchyArticleList;
+import com.fec.ex.wanandroid.hierarchy.domain.HierarchyTree;
 import com.fec.ex.wanandroid.login.domain.Login;
-import com.fec.ex.wanandroid.main.domain.Friend;
-import com.fec.ex.wanandroid.main.domain.HotKey;
-import com.fec.ex.wanandroid.main.domain.MainArticleList;
-import com.fec.ex.wanandroid.main.domain.Banner;
+import com.fec.ex.wanandroid.main.domain.model.Friend;
+import com.fec.ex.wanandroid.main.domain.model.HotKey;
+import com.fec.ex.wanandroid.main.domain.model.MainArticleList;
+import com.fec.ex.wanandroid.main.domain.model.Banner;
 import com.fec.ex.wanandroid.settings.navigation.Navigation;
-import com.fec.ex.wanandroid.project.domain.ProjectList;
-import com.fec.ex.wanandroid.project.domain.ProjectTree;
+import com.fec.ex.wanandroid.project.domain.model.ProjectList;
+import com.fec.ex.wanandroid.project.domain.model.ProjectTree;
 
 import java.util.List;
 
@@ -74,7 +74,7 @@ public interface WanApi {
      * @return
      */
     @GET("tree/json")
-    Observable<BaseBean<List<KnowledgeTree>>> getKnowledgeTree();
+    Observable<BaseBean<List<HierarchyTree>>> getHierarchyTree();
 
     /**
      * 获取知识体系下的文章
@@ -84,7 +84,7 @@ public interface WanApi {
      * @return
      */
     @GET("article/list/{page}/json")
-    Observable<BaseBean<KnowledgeArticleList>> getKnowledgeArticleList(
+    Observable<BaseBean<HierarchyArticleList>> getHierarchyArticleList(
         @Path("page") int page,
         @Query("cid") int cid
     );
