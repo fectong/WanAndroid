@@ -9,4 +9,7 @@ WanAndroid Android APP
 - [Retrofit2](https://github.com/square/retrofit)
 - [Architecture](https://github.com/googlesamples/android-architecture)
 - [MVP-CLEAN](https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean)
+- [Material Design 2](https://material.io)
+- [Banner](https://github.com/youth5201314/banner)
 
+> BottomNavigationView + ViewPager + Fragment
