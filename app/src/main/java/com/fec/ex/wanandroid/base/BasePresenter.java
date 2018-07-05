@@ -6,5 +6,4 @@ package com.fec.ex.wanandroid.base;
  * Email : fectong@live.com
  */
 public interface BasePresenter {
-    void start();
 }
