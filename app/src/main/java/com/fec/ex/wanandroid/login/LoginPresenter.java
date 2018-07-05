@@ -6,8 +6,4 @@ package com.fec.ex.wanandroid.login;
  * Email : fectong@live.com
  */
 public class LoginPresenter implements LoginContract.Presenter {
-    @Override
-    public void start() {
-
-    }
 }

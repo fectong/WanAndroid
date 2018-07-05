@@ -8,8 +8,4 @@ import android.support.v4.app.Fragment;
  * Email : fectong@live.com
  */
 public class LoginFragment extends Fragment implements LoginContract.View {
-    @Override
-    public void setPresenter(LoginContract.Presenter presenter) {
-
-    }
 }
