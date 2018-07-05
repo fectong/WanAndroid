@@ -1,10 +1,8 @@
 package com.fec.ex.wanandroid.main;
 
-import com.fec.ex.wanandroid.base.BaseBean;
 import com.fec.ex.wanandroid.base.BasePresenter;
 import com.fec.ex.wanandroid.base.BaseView;
-import com.fec.ex.wanandroid.main.domain.MainArticleList;
-import com.youth.banner.Banner;
+import com.fec.ex.wanandroid.main.domain.model.MainArticleList;
 
 import java.util.List;
 
@@ -17,15 +15,13 @@ public interface MainContract {
 
     public interface View extends BaseView<Presenter> {
 
-        void initBanner(List<com.fec.ex.wanandroid.main.domain.Banner> listBanner);
+        void initBanner(List<com.fec.ex.wanandroid.main.domain.model.Banner> listBanner);
 
         void showMainArticleList(List<MainArticleList.DatasBean> articleList);
 
     }
 
     public interface Presenter extends BasePresenter {
-
-        void detachView();
 
         void getBanner();
 

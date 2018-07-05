@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.main.domain;
+package com.fec.ex.wanandroid.main.domain.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.fec.ex.wanandroid.R;
+import com.fec.ex.wanandroid.main.domain.model.MainArticleList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +26,8 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     private List<MainArticleList.DatasBean> mArticleList;
     private Context mContext;
 
-    private OnItemClickListener listener;
-
     public MainListAdapter(List<MainArticleList.DatasBean> articleList) {
         mArticleList = articleList;
-    }
-
-    public MainListAdapter() {
-        mArticleList = new ArrayList<>();
     }
 
     @NonNull
@@ -49,7 +44,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
         if (!(dataBean.getEnvelopePic().equals(""))) {
             Glide.with(mContext).load(dataBean.getEnvelopePic()).into(viewHolder.ivArticle);
         } else {
-            viewHolder.ivArticle.setImageResource(R.mipmap.img_tmp);
+            viewHolder.ivArticle.setImageResource(R.drawable.ic_android_holder);
         }
         viewHolder.tvTitle.setText(dataBean.getTitle());
         viewHolder.tvAuthor.setText(dataBean.getAuthor());
@@ -65,7 +60,6 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
         }
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvTitle;
@@ -80,28 +74,6 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
             tvAuthor = itemView.findViewById(R.id.tvAuthor);
             tvDesc = itemView.findViewById(R.id.tvDesc);
             ivArticle = itemView.findViewById(R.id.ivArticleImage);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (listener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(itemView, position);
-                        }
-                    }
-                }
-            });
         }
     }
-
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
-    }
-
-
 }

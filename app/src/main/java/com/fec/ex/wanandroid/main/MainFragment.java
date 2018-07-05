@@ -1,6 +1,5 @@
 package com.fec.ex.wanandroid.main;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,16 +7,16 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.fec.ex.wanandroid.R;
 import com.fec.ex.wanandroid.helper.GlideImageLoader;
-import com.fec.ex.wanandroid.main.domain.Banner;
-import com.fec.ex.wanandroid.main.domain.MainArticleList;
-import com.fec.ex.wanandroid.main.domain.MainListAdapter;
+import com.fec.ex.wanandroid.helper.RvItemClickListener;
+import com.fec.ex.wanandroid.main.domain.model.Banner;
+import com.fec.ex.wanandroid.main.domain.model.MainArticleList;
+import com.fec.ex.wanandroid.main.domain.adapter.MainListAdapter;
 import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class MainFragment extends Fragment implements MainContract.View, OnBanne
     private final String TAG = this.getClass().getName();
     private MainContract.Presenter mPresenter;
     private RecyclerView mRecyclerView;
-    private MainListAdapter adapter;
+    private MainListAdapter mAdapter;
     private com.youth.banner.Banner mBanner;
     private List<String> mBannerUrlList;
     private List<Banner> bannerList;
@@ -46,8 +45,7 @@ public class MainFragment extends Fragment implements MainContract.View, OnBanne
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
     @Override
@@ -60,19 +58,10 @@ public class MainFragment extends Fragment implements MainContract.View, OnBanne
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void setPresenter(MainContract.Presenter presenter) {
-    }
-
-
-    @Override
     public void OnBannerClick(int position) {
         Intent intent = new Intent(getContext(), ArticleActivity.class);
         intent.putExtra("URL", bannerList.get(position).getUrl());
+        intent.putExtra("TITLE", bannerList.get(position).getTitle());
         startActivity(intent);
     }
 
@@ -92,19 +81,25 @@ public class MainFragment extends Fragment implements MainContract.View, OnBanne
     @Override
     public void showMainArticleList(final List<MainArticleList.DatasBean> articleList) {
         mArticleList = articleList;
-        adapter = new MainListAdapter(mArticleList);
-        adapter.setOnItemClickListener(new MainListAdapter.OnItemClickListener() {
+        mAdapter = new MainListAdapter(mArticleList);
+        mRecyclerView = getView().findViewById(R.id.rvMainArticle);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setNestedScrollingEnabled(false);
+        mRecyclerView.addOnItemTouchListener(new RvItemClickListener(getContext(), mRecyclerView, new RvItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getContext(), ArticleActivity.class);
-                intent.putExtra("URL", articleList.get(position).getLink());
+                intent.putExtra("URL", mArticleList.get(position).getLink());
+                intent.putExtra("TITLE", mArticleList.get(position).getTitle());
                 startActivity(intent);
             }
-        });
-        mRecyclerView = getView().findViewById(R.id.rvMainArticle);
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setAdapter(adapter);
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
     }
 
 }

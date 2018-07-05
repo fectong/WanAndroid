@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.main.domain;
+package com.fec.ex.wanandroid.main.domain.model;
 
 import java.util.List;
 

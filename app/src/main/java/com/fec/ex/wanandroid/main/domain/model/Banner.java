@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.main.domain;
+package com.fec.ex.wanandroid.main.domain.model;
 
 /**
  * Created by Fe2Cu on 06.29.2018

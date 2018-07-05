@@ -1,14 +1,10 @@
 package com.fec.ex.wanandroid.main;
 
-import android.util.Log;
-
 import com.fec.ex.wanandroid.base.BaseBean;
-import com.fec.ex.wanandroid.helper.GlideImageLoader;
 import com.fec.ex.wanandroid.helper.RetrofitManager;
-import com.fec.ex.wanandroid.main.domain.Banner;
-import com.fec.ex.wanandroid.main.domain.MainArticleList;
+import com.fec.ex.wanandroid.main.domain.model.Banner;
+import com.fec.ex.wanandroid.main.domain.model.MainArticleList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -24,28 +20,17 @@ import io.reactivex.schedulers.Schedulers;
 public class MainPresenter implements MainContract.Presenter {
 
     private MainContract.View mView;
-    private RetrofitManager client;
+    private RetrofitManager mClient;
     private static final String TAG = "MainPresenter";
 
     public MainPresenter(MainContract.View view) {
         mView = view;
-        mView.setPresenter(this);
-        client = RetrofitManager.instance();
-    }
-
-    @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void detachView() {
-        this.mView = null;
+        mClient = RetrofitManager.instance();
     }
 
     @Override
     public void getBanner() {
-        client.getWanService()
+        mClient.getWanService()
                 .getBanner()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -74,7 +59,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void getMainArticleList(int page) {
-        client.getWanService()
+        mClient.getWanService()
                 .getMainArticleList(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
