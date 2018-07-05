@@ -9,3 +9,6 @@
 /captures
 .externalNativeBuild
 /.project
+app/.project
+app/.classpath
+*.prefs
