@@ -9,4 +9,8 @@
     <string name="article_title">Article Title</string>
     <string name="author_name">Author Name</string>
     <string name="article_envelope">Article\'s Envelope</string>
+    <string name="holder">HOLDER</string>
+    <string name="home">Home</string>
+    <string name="hierarchy">Hierarchy</string>
+    <string name="project">Project</string>
 </resources>
