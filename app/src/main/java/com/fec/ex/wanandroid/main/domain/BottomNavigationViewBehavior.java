@@ -43,11 +43,11 @@ public class BottomNavigationViewBehavior extends CoordinatorLayout.Behavior<Bot
 
     private void slideUp(BottomNavigationView child) {
         child.clearAnimation();
-        child.animate().translationY(0).setDuration(100);
+        child.animate().translationY(0).setDuration(200);
     }
 
     private void slideDown(BottomNavigationView child) {
         child.clearAnimation();
-        child.animate().translationY(height).setDuration(100);
+        child.animate().translationY(height).setDuration(200);
     }
 }

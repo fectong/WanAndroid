@@ -9,11 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.fec.ex.wanandroid.R;
+import com.fec.ex.wanandroid.base.GlideApp;
 import com.fec.ex.wanandroid.main.domain.model.MainArticleList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,18 +33,18 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         mContext = viewGroup.getContext();
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_article_list, viewGroup, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_main_article_list, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         MainArticleList.DatasBean dataBean = mArticleList.get(i);
-        if (!(dataBean.getEnvelopePic().equals(""))) {
-            Glide.with(mContext).load(dataBean.getEnvelopePic()).into(viewHolder.ivArticle);
-        } else {
-            viewHolder.ivArticle.setImageResource(R.drawable.ic_android_holder);
-        }
+
+        GlideApp.with(mContext)
+                .load(dataBean.getEnvelopePic())
+                .placeholder(R.drawable.ic_android_holder)
+                .into(viewHolder.ivArticle);
         viewHolder.tvTitle.setText(dataBean.getTitle());
         viewHolder.tvAuthor.setText(dataBean.getAuthor());
         viewHolder.tvDesc.setText(dataBean.getDesc());

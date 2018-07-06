@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.fec.ex.wanandroid.R;
+import com.fec.ex.wanandroid.base.GlideApp;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyArticleList;
 
 import java.util.List;
@@ -33,21 +33,16 @@ public class HierarchyArticleListAdapter extends RecyclerView.Adapter<HierarchyA
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         mContext = viewGroup.getContext();
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_article_list, viewGroup, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_hierarchy_article_list, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         HierarchyArticleList.DatasBean dataBean = mHierarchyArticleList.get(position);
-        if (!(dataBean.getEnvelopePic().equals(""))) {
-            Glide.with(mContext).load(dataBean.getEnvelopePic()).into(viewHolder.ivArticle);
-        } else {
-            viewHolder.ivArticle.setImageResource(R.drawable.ic_android_holder);
-        }
+
         viewHolder.tvTitle.setText(dataBean.getTitle());
         viewHolder.tvAuthor.setText(dataBean.getAuthor());
-        viewHolder.tvDesc.setText(dataBean.getDesc());
     }
 
     @Override
@@ -63,16 +58,12 @@ public class HierarchyArticleListAdapter extends RecyclerView.Adapter<HierarchyA
 
         TextView tvTitle;
         TextView tvAuthor;
-        TextView tvDesc;
-        ImageView ivArticle;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvAuthor = itemView.findViewById(R.id.tvAuthor);
-            tvDesc = itemView.findViewById(R.id.tvDesc);
-            ivArticle = itemView.findViewById(R.id.ivArticleImage);
         }
     }
 }

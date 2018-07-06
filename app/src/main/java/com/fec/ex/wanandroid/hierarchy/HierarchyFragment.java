@@ -79,11 +79,6 @@ public class HierarchyFragment extends Fragment implements HierarchyContract.Vie
 
     @Override
     public void showError() {
-        Snackbar.make(getView(), "Get article list failed.", Snackbar.LENGTH_SHORT).setAction("I SEE", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        }).show();
     }
 }

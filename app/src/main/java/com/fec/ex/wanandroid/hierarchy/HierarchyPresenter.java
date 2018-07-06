@@ -1,5 +1,7 @@
 package com.fec.ex.wanandroid.hierarchy;
 
+import android.util.Log;
+
 import com.fec.ex.wanandroid.base.BaseBean;
 import com.fec.ex.wanandroid.helper.RetrofitManager;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyArticleList;
@@ -39,11 +41,7 @@ public class HierarchyPresenter implements HierarchyContract.Presenter {
 
                     @Override
                     public void onNext(BaseBean<HierarchyArticleList> hierarchyArticleListBaseBean) {
-                        if (hierarchyArticleListBaseBean.getData().getDatas().size() != 0){
-                            mView.showHierarchyArticleList(hierarchyArticleListBaseBean.getData().getDatas());
-                        } else {
-                            mView.showError();
-                        }
+                        mView.showHierarchyArticleList(hierarchyArticleListBaseBean.getData().getDatas());
                     }
 
                     @Override
