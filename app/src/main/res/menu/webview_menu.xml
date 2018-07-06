@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/webNavBrowser"
+        android:enabled="true"
+        android:icon="@drawable/ic_chrome"
+        android:orderInCategory="0"
+        android:title="@string/open_in_browser"
+        app:showAsAction="ifRoom" />
+</menu>
