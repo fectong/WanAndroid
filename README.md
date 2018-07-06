@@ -11,5 +11,6 @@ WanAndroid Android APP
 - [MVP-CLEAN](https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean)
 - [Material Design 2](https://material.io)
 - [Banner](https://github.com/youth5201314/banner)
+- [Glide](https://github.com/bumptech/glide)
 
 > BottomNavigationView + ViewPager + Fragment
