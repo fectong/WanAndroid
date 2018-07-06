@@ -8,37 +8,13 @@
     android:background="@color/colorBG"
     tools:context=".main.MainActivity">
 
-    <!--<android.support.design.bottomappbar.BottomAppBar-->
-        <!--android:id="@+id/bottomAppBar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?attr/actionBarSize"-->
-        <!--android:layout_gravity="bottom"-->
-        <!--android:theme="@style/Widget.MaterialComponents.BottomAppBar"-->
-        <!--app:popupTheme="@style/Widget.MaterialComponents.BottomAppBar.Colored"-->
-        <!--app:backgroundTint="@color/colorPrimaryDark"-->
-        <!--app:fabCradleRoundedCornerRadius="0dp"-->
-        <!--app:hideOnScroll="true"-->
-        <!--app:fabAttached="true" >-->
-    <!--</android.support.design.bottomappbar.BottomAppBar>-->
-
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/bottomFAB"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="bottom|center_horizontal"-->
-        <!--android:src="@drawable/ic_bottom_fab"-->
-        <!--app:backgroundTint="@color/colorAccent"-->
-        <!--app:layout_anchor="@id/bottomAppBar"/>-->
-
-    <!--<FrameLayout-->
-        <!--android:id="@+id/mainContentPlaceHolder"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
+    <include layout="@layout/toolbar" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNav"
@@ -49,5 +25,4 @@
         app:itemIconTint="@drawable/bottom_nav_selector"
         app:itemTextColor="@drawable/bottom_nav_selector"
         app:menu="@menu/bottom_nav_menu" />
-
 </android.support.design.widget.CoordinatorLayout>

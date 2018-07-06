@@ -2,10 +2,13 @@ package com.fec.ex.wanandroid.main;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fec.ex.wanandroid.R;
@@ -17,14 +20,30 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     private final String TAG = this.getClass().getName();
     private BottomNavigationView mBottomNavigationView;
     private ViewPager mViewPager;
+    private CollapsingToolbarLayout mCollapsingToolbar;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initToolbar();
         initBottomNavigationView();
         initViewPager();
+    }
+
+    private void initToolbar() {
+        mCollapsingToolbar = findViewById(R.id.collapsing_toolbar);
+        mToolbar = findViewById(R.id.toolbar);
+        mCollapsingToolbar.setTitleEnabled(false);
+        setSupportActionBar(mToolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_toolbar_menu, menu);
+        return true;
     }
 
     private void initBottomNavigationView() {
