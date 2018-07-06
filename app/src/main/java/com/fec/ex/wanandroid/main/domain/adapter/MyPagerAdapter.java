@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.fec.ex.wanandroid.hierarchy.HierarchyFragment;
 import com.fec.ex.wanandroid.main.MainFragment;
 import com.fec.ex.wanandroid.project.ProjectFragment;
+import com.fec.ex.wanandroid.settings.SettingsFragment;
 
 /**
  * Created by Fe2Cu on 07.05.2018
@@ -15,7 +16,7 @@ import com.fec.ex.wanandroid.project.ProjectFragment;
  */
 public class MyPagerAdapter extends FragmentPagerAdapter {
 
-    private static int NUM_PAGES = 3;
+    private static int NUM_PAGES = 4;
 
     public MyPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -30,6 +31,8 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
                 return HierarchyFragment.getInstance();
             case 2:
                 return ProjectFragment.getInstance();
+            case 3:
+                return SettingsFragment.getInstance();
         }
         return null;
     }
