@@ -13,4 +13,7 @@
     <string name="home">Home</string>
     <string name="hierarchy">Hierarchy</string>
     <string name="project">Project</string>
+    <string name="open_in_browser">Open in Browser</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
 </resources>
