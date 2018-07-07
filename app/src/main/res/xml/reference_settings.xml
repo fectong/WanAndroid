@@ -19,7 +19,7 @@
             android:icon="@drawable/ic_theme"
             android:key="switch_style_mode"
             android:summary="DEFAULT"
-            android:title="@string/switch_theme" />
+            android:title="@string/switch_mode" />
 
         <EditTextPreference
             android:dialogTitle="@string/new_password"

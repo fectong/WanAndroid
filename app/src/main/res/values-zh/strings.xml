@@ -13,7 +13,14 @@
     <string name="sign_status">账号状态</string>
     <string name="offline">离线</string>
     <string name="collections">收藏列表</string>
-    <string name="switch_theme">切换主题</string>
+    <string name="switch_mode">切换模式</string>
     <string name="new_password">新的密码</string>
     <string name="change_password">修改密码</string>
+    <string name="user_name">用户名</string>
+    <string name="password">输入密码</string>
+    <string name="repeat_password">再次输入密码</string>
+    <string name="ok">好的</string>
+    <string name="name_can_not_blank">用户名不能为空</string>
+    <string name="password_can_not_blank">密码不能为空</string>
+    <string name="two_password_not_equal">两次输入的密码不一致</string>
 </resources>
