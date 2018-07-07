@@ -11,9 +11,10 @@
     <color name="colorTextBG">#44000000</color>
     <color name="colorTextPrimaryDark">#aca9c7</color>
     <color name="colorTextAccent">#caade7</color>
-    <color name="colorTextGray">#AAAAAA</color>
+    <color name="colorTextGray">#888888</color>
     <color name="colorTextDark">#7e7e7e</color>
     <color name="colorTextLight">#EFEFEF</color>
+    <color name="colorTextWhite">#FEFEFE</color>
     <color name="colorNormalDark">#e9e9f9</color>
     <color name="colorNormalLight">#FFFFFF</color>
 </resources>

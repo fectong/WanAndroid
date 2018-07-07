@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <array name="holder">
+        <item>Holder 0</item>
+        <item>Holder 1</item>
+        <item>Holder 2</item>
+        <item>Holder 3</item>
+    </array>
+</resources>
