@@ -4,7 +4,7 @@ import com.fec.ex.wanandroid.base.BaseBean;
 import com.fec.ex.wanandroid.mine.collection.ArticleList;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyArticleList;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyTree;
-import com.fec.ex.wanandroid.login.domain.Login;
+import com.fec.ex.wanandroid.login.domain.LoginData;
 import com.fec.ex.wanandroid.main.domain.model.Friend;
 import com.fec.ex.wanandroid.main.domain.model.HotKey;
 import com.fec.ex.wanandroid.main.domain.model.MainArticleList;
@@ -128,7 +128,7 @@ public interface WanApi {
      */
     @POST("/user/login")
     @FormUrlEncoded
-    Observable<BaseBean<Login>> login(
+    Observable<BaseBean<LoginData>> login(
         @Field("username") String username,
         @Field("password") String password
     );
@@ -143,7 +143,7 @@ public interface WanApi {
      */
     @POST("user/register")
     @FormUrlEncoded
-    Observable<BaseBean<Login>> register(
+    Observable<BaseBean<LoginData>> register(
         @Field("username") String username,
         @Field("password") String password,
         @Field("repassword") String repassword
