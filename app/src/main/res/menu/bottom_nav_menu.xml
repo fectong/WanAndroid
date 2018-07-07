@@ -27,7 +27,7 @@
         android:drawable="@drawable/bottom_nav_selector"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/nav_settings"
+        android:id="@+id/nav_mine"
         android:orderInCategory="4"
         android:title="@string/settings"
         android:icon="@drawable/ic_settings"

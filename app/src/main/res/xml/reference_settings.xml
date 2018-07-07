@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:icon="@drawable/ic_user"
+        android:key="user_info"
+        android:summary="@string/offline"
+        android:title="@string/sign_status" />
+
+    <PreferenceCategory android:title="@string/settings">
+
+        <PreferenceScreen
+            android:icon="@drawable/ic_collection"
+            android:title="@string/collections">
+
+        </PreferenceScreen>
+
+        <SwitchPreference
+            android:icon="@drawable/ic_theme"
+            android:key="switch_style_mode"
+            android:summary="DEFAULT"
+            android:title="@string/switch_theme" />
+
+        <EditTextPreference
+            android:dialogTitle="@string/new_password"
+            android:icon="@drawable/ic_password"
+            android:key="change_password"
+            android:title="@string/change_password" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="About">
+        <PreferenceScreen
+            android:icon="@drawable/ic_github"
+            android:title="Github">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/fectong/WanAndroid" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:icon="@drawable/ic_blog"
+            android:title="Blog">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://fectong.github.io" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory>
+        <PreferenceScreen
+            android:icon="@drawable/ic_sign_in_out"
+            android:title="@string/sign_in">
+
+        </PreferenceScreen>
+    </PreferenceCategory>
+</PreferenceScreen>
