@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.settings.collection;
+package com.fec.ex.wanandroid.mine.collection;
 
 import java.util.List;
 

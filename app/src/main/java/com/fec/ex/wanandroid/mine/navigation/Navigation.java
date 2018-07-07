@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.settings.navigation;
+package com.fec.ex.wanandroid.mine.navigation;
 
 import java.util.List;
 
