@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.mine;
+package com.fec.ex.wanandroid.settings.mine;
 
 /**
  * Created by Fe2Cu on 07.07.2018

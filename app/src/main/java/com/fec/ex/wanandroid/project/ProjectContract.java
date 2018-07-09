@@ -1,5 +1,7 @@
 package com.fec.ex.wanandroid.project;
 
+import android.view.View;
+
 import com.fec.ex.wanandroid.base.BasePresenter;
 import com.fec.ex.wanandroid.base.BaseView;
 import com.fec.ex.wanandroid.project.domain.model.ProjectList;
@@ -14,6 +16,8 @@ import java.util.List;
 public interface ProjectContract {
 
     public interface View extends BaseView<Presenter> {
+        void init(android.view.View view);
+
         void showProjectList(List<ProjectList.DatasBean> projectList);
     }
 

@@ -2,10 +2,10 @@ package com.fec.ex.wanandroid.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.fec.ex.wanandroid.R;
+import com.fec.ex.wanandroid.helper.Constants;
+import com.fec.ex.wanandroid.helper.Utils;
 import com.fec.ex.wanandroid.login.domain.LoginData;
 import com.fec.ex.wanandroid.main.MainActivity;
 
@@ -39,9 +41,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
         mContext = this;
+        if (Utils.isLogin()) {
+            initSign();
+        }
+        setContentView(R.layout.activity_login);
         mPresenter = new LoginPresenter(this);
+
         init();
     }
 
@@ -64,20 +70,27 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void initSign(LoginData loginData) {
-        startActivity(new Intent(mContext, MainActivity.class));
+    public void initSign() {
+        Intent intent = new Intent(mContext, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     @Override
     public void showError(String errorMsg) {
-        snack(errorMsg);
+        Utils.snack(this, errorMsg, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.later:
-                startActivity(new Intent(mContext, MainActivity.class));
+                initSign();
                 break;
             case R.id.sectionSignIN:
                 if (flag) {
@@ -110,6 +123,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                         if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
                             if ((i == KeyEvent.KEYCODE_ENTER) || (flag && i == KeyEvent.KEYCODE_FORWARD)) {
                                 hideKeyboard();
+                                hideKeyboard();
                                 signIn();
                                 return true;
                             }
@@ -138,41 +152,17 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void signIn() {
-        name = mUserName.getText().toString();
-        password = mPassword.getText().toString();
-        if (name != null && !name.equals("")) {
-            if (password != null && !password.equals("")) {
-                mPresenter.signIn(name, password);
-            } else {
-                snack(getString(R.string.password_can_not_blank));
-            }
-        } else {
-            snack(getString(R.string.name_can_not_blank));
-        }
+        name = mUserName.getText().toString().trim();
+        password = mPassword.getText().toString().trim();
+        mPresenter.logIn(name, password);
     }
 
     @Override
     public void signUp() {
-        name = mUserName.getText().toString();
-        password = mPassword.getText().toString();
-        rePassword = mRePassword.getText().toString();
-        Log.d(TAG, "name: --" + name + "-");
-        Log.d(TAG, "password: --" + password + "-");
-        Log.d(TAG, "rePassword: --" + rePassword + "-");
-
-        if (name != null && !name.equals("")) {
-            if ((password != null && !password.equals("")) && (rePassword != null && !rePassword.equals(""))) {
-                if (password.equals(rePassword)) {
-                    mPresenter.signUp(name, password, rePassword);
-                } else {
-                    snack(getString(R.string.two_password_not_equal));
-                }
-            } else {
-                snack(getString(R.string.password_can_not_blank));
-            }
-        } else {
-            snack(getString(R.string.name_can_not_blank));
-        }
+        name = mUserName.getText().toString().trim();
+        password = mPassword.getText().toString().trim();
+        rePassword = mRePassword.getText().toString().trim();
+        mPresenter.register(name, password, rePassword);
     }
 
     private void hideKeyboard() {
@@ -182,14 +172,4 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         inputManager.hideSoftInputFromWindow((null == getCurrentFocus()) ? null : getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
     }
-
-    private void snack(String msg) {
-        Snackbar.make(mLater, msg, Snackbar.LENGTH_SHORT).setAction(R.string.ok, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        }).show();
-    }
-
 }

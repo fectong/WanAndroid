@@ -6,11 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fec.ex.wanandroid.R;
-import com.fec.ex.wanandroid.base.GlideApp;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyArticleList;
 
 import java.util.List;
@@ -33,7 +31,7 @@ public class HierarchyArticleListAdapter extends RecyclerView.Adapter<HierarchyA
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         mContext = viewGroup.getContext();
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_hierarchy_article_list, viewGroup, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_hierarchy_list, viewGroup, false);
         return new ViewHolder(view);
     }
 

@@ -32,7 +32,6 @@ public class ArticleActivity extends AppCompatActivity {
         String TITLE = getIntent().getStringExtra("TITLE");
 
         initToolbar(TITLE);
-
         initWebView(URL);
     }
 

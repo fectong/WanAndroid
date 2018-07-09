@@ -1,5 +1,7 @@
 package com.fec.ex.wanandroid.main;
 
+import android.util.Log;
+
 import com.fec.ex.wanandroid.base.BaseBean;
 import com.fec.ex.wanandroid.helper.RetrofitManager;
 import com.fec.ex.wanandroid.main.domain.model.Banner;
@@ -19,17 +21,19 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class MainPresenter implements MainContract.Presenter {
 
+    private static final String TAG = "MainPresenter";
     private MainContract.View mView;
     private RetrofitManager mClient;
-    private static final String TAG = "MainPresenter";
+    private int mPage;
 
     public MainPresenter(MainContract.View view) {
         mView = view;
         mClient = RetrofitManager.instance();
+        mPage = 0;
     }
 
     @Override
-    public void getBanner() {
+    public void getBannerData() {
         mClient.getWanService()
                 .getBanner()
                 .subscribeOn(Schedulers.io())
@@ -58,14 +62,46 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void getMainArticleList(int page) {
+    public void loadMoreArticleList() {
+        mPage++;
         mClient.getWanService()
-                .getMainArticleList(page)
+                .getMainArticleList(mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<BaseBean<MainArticleList>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+                        Log.d(TAG, "onSubscribe: Load Page: " + mPage);
+                    }
+
+                    @Override
+                    public void onNext(BaseBean<MainArticleList> mainArticleListBaseBean) {
+                        mView.refreshData(mainArticleListBaseBean.getData().getDatas());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public void getMainArticleList() {
+        mPage = 0;
+        mClient.getWanService()
+                .getMainArticleList(mPage)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseBean<MainArticleList>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG, "onSubscribe: Load Page: " + mPage);
                     }
 
                     @Override

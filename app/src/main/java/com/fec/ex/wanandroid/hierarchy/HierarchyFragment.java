@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 
 import com.fec.ex.wanandroid.R;
 import com.fec.ex.wanandroid.helper.RvItemClickListener;
+import com.fec.ex.wanandroid.helper.Utils;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyArticleList;
+import com.fec.ex.wanandroid.hierarchy.domain.adapter.HierarchyAdapter;
 import com.fec.ex.wanandroid.hierarchy.domain.adapter.HierarchyArticleListAdapter;
 import com.fec.ex.wanandroid.main.ArticleActivity;
 
@@ -31,7 +33,7 @@ public class HierarchyFragment extends Fragment implements HierarchyContract.Vie
     private final String TAG = this.getClass().getName();
     private HierarchyContract.Presenter mPresenter;
     private RecyclerView mRecyclerView;
-    private HierarchyArticleListAdapter mAdapter;
+    private HierarchyAdapter mAdapter;
     private List<HierarchyArticleList.DatasBean> mHierarchyArticleList;
 
     public static HierarchyFragment getInstance(){
@@ -47,34 +49,28 @@ public class HierarchyFragment extends Fragment implements HierarchyContract.Vie
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = getView().findViewById(R.id.rvHierarchy);
+        init(view);
+    }
+
+    @Override
+    public void init(View view) {
+        mRecyclerView = view.findViewById(R.id.rvHierarchy);
         mPresenter = new HierarchyPresenter(this);
+        initData();
+    }
+
+    private void initData() {
         mPresenter.getHierarchyArticleList(0, 10);
     }
 
     @Override
     public void showHierarchyArticleList(List<HierarchyArticleList.DatasBean> hierarchyArticleList) {
         mHierarchyArticleList = hierarchyArticleList;
-        Log.d(TAG, "showHierarchyArticleList: "+mHierarchyArticleList.size());
-        mAdapter = new HierarchyArticleListAdapter(mHierarchyArticleList);
-        Log.d(TAG, "showHierarchyArticleList: "+mAdapter.getItemCount());
+        mAdapter = new HierarchyAdapter(R.layout.item_hierarchy_list, mHierarchyArticleList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setNestedScrollingEnabled(false);
-        mRecyclerView.addOnItemTouchListener(new RvItemClickListener(getContext(), mRecyclerView, new RvItemClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent intent = new Intent(getContext(), ArticleActivity.class);
-                intent.putExtra("URL", mHierarchyArticleList.get(position).getLink());
-                intent.putExtra("TITLE", mHierarchyArticleList.get(position).getTitle());
-                startActivity(intent);
-            }
-
-            @Override
-            public void onLongItemClick(View view, int position) {
-
-            }
-        }));
+        mAdapter.setOnItemClickListener((adapter, view, position)
+                -> Utils.toArticleView(getContext(), mHierarchyArticleList.get(position).getLink(), mHierarchyArticleList.get(position).getTitle()));
     }
 
     @Override

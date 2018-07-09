@@ -49,12 +49,11 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     private void initBottomNavigationView() {
         mBottomNavigationView = findViewById(R.id.bottomNav);
         mBottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) mBottomNavigationView.getLayoutParams();
-        layoutParams.setBehavior(new BottomNavigationViewBehavior());
     }
 
     private void initViewPager() {
         mViewPager = findViewById(R.id.viewPager);
+        mViewPager.setOffscreenPageLimit(4);
         mViewPager.addOnPageChangeListener(this);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
     }

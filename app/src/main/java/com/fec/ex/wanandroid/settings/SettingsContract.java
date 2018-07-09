@@ -1,5 +1,7 @@
 package com.fec.ex.wanandroid.settings;
 
+import android.content.Context;
+
 import com.fec.ex.wanandroid.base.BasePresenter;
 import com.fec.ex.wanandroid.base.BaseView;
 
@@ -10,10 +12,15 @@ import com.fec.ex.wanandroid.base.BaseView;
  */
 public interface SettingsContract {
     public interface View extends BaseView<SettingsContract.Presenter> {
+        void init();
+
+        void initSettings();
 
     }
 
     public interface Presenter extends BasePresenter {
+        void signIn(Context context);
 
+        void signOut();
     }
 }

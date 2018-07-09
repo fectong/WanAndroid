@@ -12,7 +12,7 @@ import com.fec.ex.wanandroid.login.domain.LoginData;
 public interface LoginContract {
 
     public interface View extends BaseView<Presenter> {
-        void initSign(LoginData loginData);
+        void initSign();
 
         void showError(String errorMsg);
 
@@ -23,9 +23,9 @@ public interface LoginContract {
 
     public interface Presenter extends BasePresenter {
 
-        void signIn(String name, String password);
+        void logIn(String name, String password);
 
-        void signUp(String name, String password, String repassword);
+        void register(String name, String password, String repassword);
 
     }
 }

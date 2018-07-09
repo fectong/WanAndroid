@@ -1,7 +1,7 @@
 package com.fec.ex.wanandroid.api;
 
 import com.fec.ex.wanandroid.base.BaseBean;
-import com.fec.ex.wanandroid.mine.collection.ArticleList;
+import com.fec.ex.wanandroid.settings.mine.collection.domain.CollectionList;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyArticleList;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyTree;
 import com.fec.ex.wanandroid.login.domain.LoginData;
@@ -9,7 +9,7 @@ import com.fec.ex.wanandroid.main.domain.model.Friend;
 import com.fec.ex.wanandroid.main.domain.model.HotKey;
 import com.fec.ex.wanandroid.main.domain.model.MainArticleList;
 import com.fec.ex.wanandroid.main.domain.model.Banner;
-import com.fec.ex.wanandroid.mine.navigation.Navigation;
+import com.fec.ex.wanandroid.settings.mine.navigation.domain.NavigationList;
 import com.fec.ex.wanandroid.project.domain.model.ProjectList;
 import com.fec.ex.wanandroid.project.domain.model.ProjectTree;
 
@@ -95,7 +95,7 @@ public interface WanApi {
      * @return
      */
     @GET("navi/json")
-    Observable<BaseBean<List<Navigation>>> getNavigation();
+    Observable<BaseBean<List<NavigationList>>> getNavigation();
 
     /**
      * 获取项目分类树
@@ -156,7 +156,7 @@ public interface WanApi {
      * @return
      */
     @GET("lg/collect/list/{page}/json")
-    Observable<BaseBean<ArticleList>> getCollectionList(
+    Observable<BaseBean<CollectionList>> getCollectionList(
         @Path("page") int page
     );
 
@@ -167,7 +167,7 @@ public interface WanApi {
      * @return
      */
     @POST("lg/collect/{id}/json")
-    Observable<BaseBean<ArticleList>> addCollectionById(
+    Observable<BaseBean<CollectionList>> addCollectionById(
         @Path("id") int id
     );
 
@@ -180,7 +180,7 @@ public interface WanApi {
      * @return
      */
     @POST("lg/collect/add/json")
-    Observable<BaseBean<ArticleList>> addCollectionBySite(
+    Observable<BaseBean<CollectionList>> addCollectionBySite(
         @Query("title") String title,
         @Query("author") String author,
         @Query("link") String link
@@ -195,7 +195,7 @@ public interface WanApi {
      */
     @POST("lg/uncollect_originId/{id}/json")
     @FormUrlEncoded
-    Observable<BaseBean<ArticleList>> cancelCollection (
+    Observable<BaseBean<CollectionList>> cancelCollection (
         @Path("id") int id,
         @Field("originId") int originId
     );
@@ -210,7 +210,7 @@ public interface WanApi {
      */
     @POST("lg/uncollect/{id}/json")
     @FormUrlEncoded
-    Observable<BaseBean<ArticleList>> removeCollection (
+    Observable<BaseBean<CollectionList>> removeCollection (
             @Path("id") int id,
             @Field("originId") int originId
     );
@@ -224,7 +224,7 @@ public interface WanApi {
      */
     @POST("article/query/{page}/json")
     @FormUrlEncoded
-    Observable<BaseBean<ArticleList>> getSearchList(
+    Observable<BaseBean<CollectionList>> getSearchList(
         @Path("page") int page,
         @Field("k") String k
     );

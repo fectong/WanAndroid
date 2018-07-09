@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.mine.navigation;
+package com.fec.ex.wanandroid.settings.mine.domain;
 
 import java.util.List;
 
@@ -7,68 +7,89 @@ import java.util.List;
  * github: https://www.github.com/fectong
  * Email : fectong@live.com
  */
-public class Navigation {
+public class CollectArticleList {
 
-    private int cid;
-    private String name;
-    private List<ArticlesBean> articles;
+    private int curPage;
+    private int offset;
+    private boolean over;
+    private int pageCount;
+    private int size;
+    private int total;
+    private List<DatasBean> datas;
 
-    public int getCid() {
-        return cid;
+    public int getCurPage() {
+        return curPage;
     }
 
-    public void setCid(int cid) {
-        this.cid = cid;
+    public void setCurPage(int curPage) {
+        this.curPage = curPage;
     }
 
-    public String getName() {
-        return name;
+    public int getOffset() {
+        return offset;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOffset(int offset) {
+        this.offset = offset;
     }
 
-    public List<ArticlesBean> getArticles() {
-        return articles;
+    public boolean isOver() {
+        return over;
     }
 
-    public void setArticles(List<ArticlesBean> articles) {
-        this.articles = articles;
+    public void setOver(boolean over) {
+        this.over = over;
     }
 
-    public static class ArticlesBean {
-        private String apkLink;
+    public int getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public List<DatasBean> getDatas() {
+        return datas;
+    }
+
+    public void setDatas(List<DatasBean> datas) {
+        this.datas = datas;
+    }
+
+    public static class DatasBean {
         private String author;
         private int chapterId;
         private String chapterName;
-        private boolean collect;
         private int courseId;
         private String desc;
         private String envelopePic;
-        private boolean fresh;
         private int id;
         private String link;
         private String niceDate;
         private String origin;
-        private String projectLink;
+        private int originId;
         private long publishTime;
-        private int superChapterId;
-        private String superChapterName;
         private String title;
-        private int type;
         private int userId;
         private int visible;
         private int zan;
-        private List<?> tags;
-
-        public String getApkLink() {
-            return apkLink;
-        }
-
-        public void setApkLink(String apkLink) {
-            this.apkLink = apkLink;
-        }
 
         public String getAuthor() {
             return author;
@@ -94,14 +115,6 @@ public class Navigation {
             this.chapterName = chapterName;
         }
 
-        public boolean isCollect() {
-            return collect;
-        }
-
-        public void setCollect(boolean collect) {
-            this.collect = collect;
-        }
-
         public int getCourseId() {
             return courseId;
         }
@@ -124,14 +137,6 @@ public class Navigation {
 
         public void setEnvelopePic(String envelopePic) {
             this.envelopePic = envelopePic;
-        }
-
-        public boolean isFresh() {
-            return fresh;
-        }
-
-        public void setFresh(boolean fresh) {
-            this.fresh = fresh;
         }
 
         public int getId() {
@@ -166,12 +171,12 @@ public class Navigation {
             this.origin = origin;
         }
 
-        public String getProjectLink() {
-            return projectLink;
+        public int getOriginId() {
+            return originId;
         }
 
-        public void setProjectLink(String projectLink) {
-            this.projectLink = projectLink;
+        public void setOriginId(int originId) {
+            this.originId = originId;
         }
 
         public long getPublishTime() {
@@ -182,36 +187,12 @@ public class Navigation {
             this.publishTime = publishTime;
         }
 
-        public int getSuperChapterId() {
-            return superChapterId;
-        }
-
-        public void setSuperChapterId(int superChapterId) {
-            this.superChapterId = superChapterId;
-        }
-
-        public String getSuperChapterName() {
-            return superChapterName;
-        }
-
-        public void setSuperChapterName(String superChapterName) {
-            this.superChapterName = superChapterName;
-        }
-
         public String getTitle() {
             return title;
         }
 
         public void setTitle(String title) {
             this.title = title;
-        }
-
-        public int getType() {
-            return type;
-        }
-
-        public void setType(int type) {
-            this.type = type;
         }
 
         public int getUserId() {
@@ -236,14 +217,6 @@ public class Navigation {
 
         public void setZan(int zan) {
             this.zan = zan;
-        }
-
-        public List<?> getTags() {
-            return tags;
-        }
-
-        public void setTags(List<?> tags) {
-            this.tags = tags;
         }
     }
 }

@@ -13,8 +13,9 @@ import android.view.ViewGroup;
 
 import com.fec.ex.wanandroid.R;
 import com.fec.ex.wanandroid.helper.RvItemClickListener;
+import com.fec.ex.wanandroid.helper.Utils;
 import com.fec.ex.wanandroid.main.ArticleActivity;
-import com.fec.ex.wanandroid.project.domain.adapter.ProjectListAdapter;
+import com.fec.ex.wanandroid.project.domain.adapter.ProjectAdapter;
 import com.fec.ex.wanandroid.project.domain.model.ProjectList;
 
 import java.util.List;
@@ -29,10 +30,10 @@ public class ProjectFragment extends Fragment implements ProjectContract.View {
     private final String TAG = this.getClass().getName();
     private ProjectContract.Presenter mPresenter;
     private RecyclerView mRecyclerView;
-    private ProjectListAdapter mAdapter;
+    private ProjectAdapter mAdapter;
     private List<ProjectList.DatasBean> mProjectList;
 
-    public static ProjectFragment getInstance(){
+    public static ProjectFragment getInstance() {
         return new ProjectFragment();
     }
 
@@ -45,31 +46,27 @@ public class ProjectFragment extends Fragment implements ProjectContract.View {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        init(view);
+    }
+
+    @Override
+    public void init(View view) {
+        mRecyclerView = view.findViewById(R.id.rvProject);
         mPresenter = new ProjectPresenter(this);
+        initData();
+    }
+
+    private void initData() {
         mPresenter.getProjectList(1, 294);
     }
 
     @Override
     public void showProjectList(List<ProjectList.DatasBean> projectList) {
         mProjectList = projectList;
-        mAdapter = new ProjectListAdapter(mProjectList);
-        mRecyclerView = getView().findViewById(R.id.rvProject);
+        mAdapter = new ProjectAdapter(R.layout.item_article_list, mProjectList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setNestedScrollingEnabled(false);
-        mRecyclerView.addOnItemTouchListener(new RvItemClickListener(getContext(), mRecyclerView, new RvItemClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent intent = new Intent(getContext(), ArticleActivity.class);
-                intent.putExtra("URL", mProjectList.get(position).getLink());
-                intent.putExtra("TITLE", mProjectList.get(position).getTitle());
-                startActivity(intent);
-            }
-
-            @Override
-            public void onLongItemClick(View view, int position) {
-
-            }
-        }));
+        mAdapter.setOnItemClickListener((adapter, view, position)
+                -> Utils.toArticleView(getContext(), mProjectList.get(position).getLink(), mProjectList.get(position).getTitle()));
     }
 }

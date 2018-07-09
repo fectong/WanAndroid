@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.mine;
+package com.fec.ex.wanandroid.settings.mine;
 
 import com.fec.ex.wanandroid.base.BasePresenter;
 import com.fec.ex.wanandroid.base.BaseView;
