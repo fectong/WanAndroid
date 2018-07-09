@@ -1,14 +1,14 @@
-package com.fec.ex.wanandroid.settings.mine;
+package com.fec.ex.wanandroid.settings.mine.collection;
 
 /**
  * Created by Fe2Cu on 07.07.2018
  * github: https://www.github.com/fectong
  * Email : fectong@live.com
  */
-public class MinePresenter implements MineContract.Presenter {
-    private MineContract.View mView;
+public class CollectionPresenter implements CollectionContract.Presenter {
+    private CollectionContract.View mView;
 
-    public MinePresenter(MineContract.View view) {
+    public CollectionPresenter(CollectionContract.View view) {
         mView = view;
     }
 }

@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.settings.mine.domain;
+package com.fec.ex.wanandroid.settings.mine.collection.domain;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import java.util.List;
  * github: https://www.github.com/fectong
  * Email : fectong@live.com
  */
-public class CollectArticleList {
+public class CollectionList {
 
     private int curPage;
     private int offset;
