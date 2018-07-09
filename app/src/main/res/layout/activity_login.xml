@@ -6,8 +6,8 @@
     android:background="@drawable/login_bg"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingEnd="64dp"
-    android:paddingStart="64dp"
+    android:paddingEnd="48dp"
+    android:paddingStart="48dp"
     tools:context=".login.LoginActivity">
 
     <LinearLayout
@@ -21,8 +21,8 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
             android:text="@string/sign_in"
             android:textColor="@color/colorTextGray"
             android:textSize="16sp" />
@@ -41,8 +41,8 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
             android:text="@string/sign_up"
             android:textColor="@color/colorTextGray"
             android:textSize="16sp" />
@@ -68,6 +68,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="8dp"
             android:textSize="14sp"
             android:hint="@string/password"
             android:inputType="textPassword|textNoSuggestions"
@@ -79,7 +80,7 @@
             android:id="@+id/signIN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="16dp"
             android:gravity="center"
             android:clickable="true"
             android:focusable="true"
@@ -98,7 +99,7 @@
             android:id="@+id/signUP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="16dp"
             android:gravity="center"
             android:visibility="gone"
             android:clickable="true"
@@ -116,5 +117,5 @@
         android:padding="8dp"
         android:text="@string/later"
         android:textColor="@color/colorTextGray"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 </LinearLayout>
