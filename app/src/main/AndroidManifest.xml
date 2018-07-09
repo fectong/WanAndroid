@@ -31,6 +31,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.MainActivity" />
         </activity>
+        <activity android:name=".settings.mine.collection.CollectionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.COLLECTION"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".settings.mine.navigation.NavigationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.NAVIGATION"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

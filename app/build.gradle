@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -36,4 +40,5 @@ dependencies {
     implementation "com.github.bumptech.glide:annotations:$glide_ver"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_ver"
     implementation "com.android.support:preference-v7:$support_ver"
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
 }
