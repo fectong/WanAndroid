@@ -52,3 +52,8 @@
 6. Article
 
     ![Article](./screenshots/article_page.png)
+
+项目实现了 API 中的 主页, Banner, 体系, 项目, 设置, 登陆, 注册和未登录访问的功能  
+项目使用到了 RxJava, Retrofit2, GlideV4, MVP 架构  
+Glide 图片缓存机制(BitmapPool, MemoryCache, DiskCache)  
+OkHttp Cookie 完成cookies持久化实现免登录认证 
