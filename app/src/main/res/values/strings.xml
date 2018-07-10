@@ -33,4 +33,6 @@
     <string name="sign_out">SIGN OUT</string>
     <string name="online">ONLINE</string>
     <string name="yes">YES</string>
+    <string name="cancel">CANCEL</string>
+    <string name="no">NO</string>
 </resources>
