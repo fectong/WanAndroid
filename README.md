@@ -48,3 +48,7 @@
 
     SIGN UP:  
     ![Login](./screenshots/login_signup_page.png)
+
+6. Article
+
+    ![Article](./screenshots/article_page.png)
