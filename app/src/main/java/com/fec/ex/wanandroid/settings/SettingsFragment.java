@@ -4,10 +4,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
-import android.util.Log;
 import android.view.View;
 
 import com.fec.ex.wanandroid.R;
@@ -50,12 +48,12 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
         mPresenter = new SettingsPresenter(this);
         mUserInfo = findPreference(KEY_USER_INFO);
         mSign = findPreference(KEY_SIGN);
+
     }
 
     @Override
     public void initSettings() {
         status = Utils.isLogin();
-
         mUserInfo.setDefaultValue(status);
         mSign.setDefaultValue(status);
         mUserInfo.setSummary(status ? R.string.online : R.string.offline);
@@ -67,21 +65,9 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 if (status) {
-                    Snackbar.make(getView(), "Sign OUT?", Snackbar.LENGTH_SHORT)
-                            .setAction(R.string.yes, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    mPresenter.signOut();
-                                }
-                            }).show();
+                    mPresenter.signOut();
                 } else {
-                    Snackbar.make(getView(), "Sign IN?", Snackbar.LENGTH_SHORT)
-                            .setAction(R.string.yes, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    mPresenter.signIn(getContext());
-                                }
-                            }).show();
+                    mPresenter.signIn(getContext());
                 }
                 return true;
             }
@@ -104,5 +90,4 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
         super.onPause();
         getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
     }
-
 }

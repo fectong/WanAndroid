@@ -94,6 +94,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 break;
             case R.id.sectionSignIN:
                 if (flag) {
+                    mSectionSignIn.setTextColor(getResources().getColor(R.color.colorAccent));
+                    mSectionSignUp.setTextColor(getResources().getColor(R.color.colorTextWhite));
                     mSignIn.setVisibility(View.VISIBLE);
                     mRePassword.setVisibility(View.GONE);
                     mSignUp.setVisibility(View.GONE);
@@ -102,6 +104,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 break;
             case R.id.sectionSignUP:
                 if (!flag) {
+                    mSectionSignUp.setTextColor(getResources().getColor(R.color.colorAccent));
+                    mSectionSignIn.setTextColor(getResources().getColor(R.color.colorTextWhite));
                     mSignIn.setVisibility(View.GONE);
                     mRePassword.setVisibility(View.VISIBLE);
                     mSignUp.setVisibility(View.VISIBLE);
