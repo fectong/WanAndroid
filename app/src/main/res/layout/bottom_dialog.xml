@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomDialog"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:background="@drawable/item_bg"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="64dp"
+    app:layout_behavior="@string/bottom_sheet_behavior">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_bottom_header"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="@string/app_name"
+        android:textColor="@color/colorTextPrimaryDark" />
+
+    <TextView
+        android:id="@+id/tvYes"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@id/tvNo"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="@string/yes"
+        android:textColor="@color/colorTextAccent" />
+
+    <TextView
+        android:id="@+id/tvNo"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="@string/no"
+        android:textColor="@color/colorTextAccent" />
+
+</RelativeLayout>

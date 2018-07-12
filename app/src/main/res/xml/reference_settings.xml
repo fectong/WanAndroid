@@ -14,14 +14,15 @@
             android:icon="@drawable/ic_collection"
             android:title="@string/collection_list">
             <intent
-                android:action="android.intent.action.NAVIGATION" />
+                android:action="android.intent.action.COLLECTION" />
         </PreferenceScreen>
 
         <PreferenceScreen
             android:icon="@drawable/ic_navigation"
-            android:title="@string/nav_site">
+            android:title="@string/nav_site"
+            android:enabled="false">
             <intent
-                android:action="android.intent.action.COLLECTION" />
+                android:action="android.intent.action.NAVIGATION" />
         </PreferenceScreen>
 
         <SwitchPreference
