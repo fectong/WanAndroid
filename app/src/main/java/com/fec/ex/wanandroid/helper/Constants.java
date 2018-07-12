@@ -7,8 +7,6 @@ package com.fec.ex.wanandroid.helper;
  */
 public class Constants {
 
-    public static final int SUCCESS = 0;
-
     public static final String PREFS_LOGIN = "LoginPrefs";
     public static final String LOGIN_STATUS = "loginStatus";
 

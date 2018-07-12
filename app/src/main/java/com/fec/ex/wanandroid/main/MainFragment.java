@@ -1,6 +1,5 @@
 package com.fec.ex.wanandroid.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -86,13 +85,13 @@ public class MainFragment extends Fragment implements MainContract.View, OnBanne
         mAdapter.setOnItemClickListener((adapter, view, position)
                 -> Utils.toArticleView(getContext(), mArticleList.get(position).getLink(), mArticleList.get(position).getTitle()));
         mAdapter.setOnLoadMoreListener(() -> {
-            mPresenter.loadMoreArticleList();
+            mPresenter.getArticleList(true);
         }, mRecyclerView);
     }
 
     private void initData() {
         mPresenter.getBannerData();
-        mPresenter.getMainArticleList();
+        mPresenter.getArticleList(false);
     }
 
     @Override

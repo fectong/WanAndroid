@@ -1,7 +1,7 @@
 package com.fec.ex.wanandroid.api;
 
 import com.fec.ex.wanandroid.base.BaseBean;
-import com.fec.ex.wanandroid.settings.mine.collection.domain.CollectionList;
+import com.fec.ex.wanandroid.settings.mine.collection.domain.model.CollectionList;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyArticleList;
 import com.fec.ex.wanandroid.hierarchy.domain.HierarchyTree;
 import com.fec.ex.wanandroid.login.domain.LoginData;

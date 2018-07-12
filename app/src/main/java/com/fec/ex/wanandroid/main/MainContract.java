@@ -31,9 +31,7 @@ public interface MainContract {
 
         void getBannerData();
 
-        void loadMoreArticleList();
-
-        void getMainArticleList();
+        void getArticleList(boolean loadMore);
 
     }
 }

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.fec.ex.wanandroid.R;
 import com.fec.ex.wanandroid.helper.RvItemClickListener;
@@ -20,6 +21,7 @@ import com.fec.ex.wanandroid.hierarchy.domain.HierarchyArticleList;
 import com.fec.ex.wanandroid.hierarchy.domain.adapter.HierarchyAdapter;
 import com.fec.ex.wanandroid.hierarchy.domain.adapter.HierarchyArticleListAdapter;
 import com.fec.ex.wanandroid.main.ArticleActivity;
+import com.fec.ex.wanandroid.settings.mine.collection.CollectionActivity;
 
 import java.util.List;
 

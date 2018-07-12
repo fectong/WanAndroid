@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -44,6 +45,12 @@ public class Utils {
         intent.putExtra("URL", url);
         intent.putExtra("TITLE", title);
         context.startActivity(intent);
+    }
+
+    public static boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) App.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert connectivityManager != null;
+        return connectivityManager.getActiveNetworkInfo() != null;
     }
 
 }

@@ -40,7 +40,7 @@ public class MyAppGlideModule extends AppGlideModule {
         builder.setBitmapPool(new LruBitmapPool(poolCalculator.getBitmapPoolSize()));
 
         // Configure disk cache
-        int diskCacheSizeBytes = 1024*1024*50;  // 100 MB
+        int diskCacheSizeBytes = 1024*1024*50;  // 50 MB
         builder.setDiskCache(new InternalCacheDiskCacheFactory(context, diskCacheSizeBytes));
 
         // Configure RequestOptions

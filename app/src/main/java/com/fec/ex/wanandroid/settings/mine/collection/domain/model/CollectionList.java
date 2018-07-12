@@ -1,4 +1,4 @@
-package com.fec.ex.wanandroid.settings.mine.collection.domain;
+package com.fec.ex.wanandroid.settings.mine.collection.domain.model;
 
 import java.util.List;
 

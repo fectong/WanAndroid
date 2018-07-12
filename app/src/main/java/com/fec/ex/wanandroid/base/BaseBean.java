@@ -7,6 +7,9 @@ package com.fec.ex.wanandroid.base;
  */
 public class BaseBean<T> {
 
+    public static final int SUCCESS = 0;
+    public static final int FAIL = 1;
+
     private int errorCode;
     private String errorMsg;
     private T data;

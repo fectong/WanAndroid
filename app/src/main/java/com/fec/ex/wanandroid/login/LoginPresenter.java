@@ -1,20 +1,17 @@
 package com.fec.ex.wanandroid.login;
 
-import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.fec.ex.wanandroid.R;
 import com.fec.ex.wanandroid.base.App;
 import com.fec.ex.wanandroid.base.BaseBean;
-import com.fec.ex.wanandroid.helper.Constants;
 import com.fec.ex.wanandroid.helper.RetrofitManager;
+import com.fec.ex.wanandroid.helper.RxHelper;
 import com.fec.ex.wanandroid.helper.Utils;
 import com.fec.ex.wanandroid.login.domain.LoginData;
 
 import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Fe2Cu on 07.01.2018
@@ -46,8 +43,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
         mClient.getWanService()
                 .login(name, password)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxHelper.io2main())
                 .subscribe(new Observer<BaseBean<LoginData>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -56,7 +52,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                     @Override
                     public void onNext(BaseBean<LoginData> loginBaseBean) {
-                        if (loginBaseBean.getErrorCode() == Constants.SUCCESS) {
+                        if (loginBaseBean.getErrorCode() == loginBaseBean.SUCCESS) {
                             Utils.setLogin(true);
                             mView.initSign();
                         } else {
@@ -94,8 +90,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
         mClient.getWanService()
                 .register(name, password, repassword)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxHelper.io2main())
                 .subscribe(new Observer<BaseBean<LoginData>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -104,7 +99,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                     @Override
                     public void onNext(BaseBean<LoginData> loginBaseBean) {
-                        if (loginBaseBean.getErrorCode() == Constants.SUCCESS) {
+                        if (loginBaseBean.getErrorCode() == loginBaseBean.SUCCESS) {
                             Utils.setLogin(true);
                             mView.initSign();
                         } else {
